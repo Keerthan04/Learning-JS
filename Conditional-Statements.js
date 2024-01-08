@@ -39,12 +39,87 @@ if (wordCount) {
 }
 
 
-let favoritePhrase = '';
+let favoritePhrases = '';
 
-if (favoritePhrase) {
+if (favoritePhrases) {
   console.log("This string doesn't seem to be empty.");
 } else {
   console.log('This string is definitely empty.');
+}
+//short-circuit evaluation
+let tool = '';
+
+// Use short circuit evaluation to assign  writingUtensil variable below:
+let writingUtensil= tool || 'pen';
+
+console.log(`The ${writingUtensil} is mightier than the sword.`);
+tool='marker';
+writingUtensil= tool || 'pen';
+
+console.log(`The ${writingUtensil} is mightier than the sword.`);
+
+//Ternary operator
+let isLocked = false;
+
+/*if (isLocked) {
+  console.log('You will need a key to open the door.');
+} else {
+  console.log('You will not need a key to open the door.');
+} */
+isLocked ? console.log('You will need a key to open the door.') : console.log('You will not need a key to open the door.');
+
+let isCorrect = true;
+/*
+if (isCorrect) {
+  console.log('Correct!');
+} else {
+  console.log('Incorrect!');
+}
+*/
+isCorrect ? console.log('Correct!') : console.log('Incorrect!');
+
+let favoritePhrase = 'Love That!';
+/*
+if (favoritePhrase === 'Love That!') {
+  console.log('I love that!');
+} else {
+  console.log("I don't love that!");
+}
+*/
+favoritePhrase === "Love That!" ? console.log('I love that!') : console.log("I don't love that!");
+
+//else-if
+let season = 'summer';
+
+if (season === 'spring') {
+  console.log('It\'s spring! The trees are budding!');
+}else if(season === 'winter'){
+  console.log('It\'s winter! Everything is covered in snow.')
+}else if(season === 'fall'){
+  console.log('It\'s fall! Leaves are falling!')
+}
+else if(season === 'summer'){
+  console.log('It\'s sunny and warm because it\'s summer!')
+}
+ else {
+  console.log('Invalid season.');
+}
+
+//switch case
+let athleteFinalPosition = 'first place';
+switch(athleteFinalPosition){
+  case 'first place':
+    console.log('You get the gold medal!');
+    break;
+  case 'second place':
+    console.log('You get the silver medal!');
+    break;
+  case 'third place':
+    console.log('You get the bronze medal!');
+    break;
+  default:
+    console.log('No medal awarded.');
+    break;
 }
 
 
@@ -218,4 +293,156 @@ if (favoritePhrase) {
     the code block in the else statement will run.
     truthly means the variable is assigned a value it runs
     falsely means the variable hasn't got any value(0,null,"",undefined(not assigned))
+
+  6.Truthy and Falsy Assignment
+    Truthy and falsy evaluations open a world of short-hand possibilities!
+
+    Say you have a website and want to take a user’s username to make a personalized greeting. Sometimes, 
+    the user does not have an account, making the username variable falsy. The code below checks if 
+    username is defined and assigns a default string if it is not:
+
+    let username = '';
+    let defaultName;
+
+    if (username) {
+    defaultName = username;
+    } else {
+    defaultName = 'Stranger';
+    }
+
+    console.log(defaultName); // Prints: Stranger
+
+    If you combine your knowledge of logical operators you can use a short-hand for the code above. 
+    In a boolean condition, JavaScript assigns the truthy value to a variable if you use the || operator 
+    in your assignment:
+
+    let username = '';
+    let defaultName = username || 'Stranger'; checks username as empty string false
+
+    console.log(defaultName); // Prints: Stranger
+
+    Because || or statements check the left-hand condition first, the variable defaultName will be 
+    assigned the actual value of username if it is truthy, and it will be assigned the value of 'Stranger' 
+    if username is falsy. This concept is also referred to as short-circuit evaluation.
+
+  7.Ternary Operator
+    In the spirit of using short-hand syntax, we can use a ternary operator to simplify an if...else 
+    statement.
+
+    Take a look at the if...else statement example:
+
+    let isNightTime = true;
+
+    if (isNightTime) {
+    console.log('Turn on the lights!');
+    } else {
+    console.log('Turn off the lights!');
+    }
+
+    We can use a ternary operator to perform the same functionality:
+
+    isNightTime ? console.log('Turn on the lights!') : console.log('Turn off the lights!');
+
+    In the example above:
+
+    The condition, isNightTime, is provided before the ?.
+    Two expressions follow the ? and are separated by a colon :.
+    If the condition evaluates to true, the first expression executes.
+    If the condition evaluates to false, the second expression executes.
+    Like if...else statements, ternary operators can be used for conditions which evaluate to true or false.
+
+  8.Else If Statements
+    We can add more conditions to our if...else with an else if statement. The else if statement allows 
+    for more than two possible outcomes. You can add as many else if statements as you’d like, to make 
+    more complex conditionals!
+
+    The else if statement always comes after the if statement and before the else statement. The else if 
+    statement also takes a condition. Let’s take a look at the syntax:
+
+    let stopLight = 'yellow';
+
+    if (stopLight === 'red') {
+    console.log('Stop!');
+    } else if (stopLight === 'yellow') {
+    console.log('Slow down.');
+    } else if (stopLight === 'green') {
+    console.log('Go!');
+    } else {
+    console.log('Caution, unknown!');
+    }
+
+    The else if statements allow you to have multiple possible outcomes. if/else if/else statements are read 
+    from top to bottom, so the first condition that evaluates to true from the top to bottom is the 
+    block that gets executed.
+
+    In the example above, since stopLight === 'red' evaluates to false and stopLight === 'yellow' 
+    evaluates to true, the code inside the first else if statement is executed. The rest of the conditions 
+    are not evaluated. If none of the conditions evaluated to true, then the code in the else statement
+    would have executed.
+
+  9.The switch keyword
+    else if statements are a great tool if we need to check multiple conditions. In programming, we often 
+    find ourselves needing to check multiple values and handling each of them differently. For example:
+
+    let groceryItem = 'papaya';
+
+    if (groceryItem === 'tomato') {
+    console.log('Tomatoes are $0.49');
+    } else if (groceryItem === 'papaya'){
+    console.log('Papayas are $1.29');
+    } else {
+    console.log('Invalid item');
+    }
+
+    In the code above, we have a series of conditions checking for a value that matches a groceryItem 
+    variable. Our code works fine, but imagine if we needed to check 100 different values! Having to 
+    write that many else if statements sounds like a pain!
+
+    A switch statement provides an alternative syntax that is easier to read and write. A switch statement 
+    looks like this:
+
+    let groceryItem = 'papaya';
+
+    switch (groceryItem) {
+    case 'tomato':
+        console.log('Tomatoes are $0.49');
+        break;
+    case 'lime':
+        console.log('Limes are $1.49');
+        break;
+    case 'papaya':
+        console.log('Papayas are $1.29');
+        break;
+    default:
+        console.log('Invalid item');
+        break;
+    }
+
+    // Prints 'Papayas are $1.29'
+
+    The switch keyword initiates the statement and is followed by ( ... ), which contains the value that each
+    case will compare. In the example, the value or expression of the switch statement is groceryItem.
+    Inside the block, { ... }, there are multiple cases. The case keyword checks if the expression matches 
+    the specified value that comes after it. The value following the first case is 'tomato'. If the 
+    value of groceryItem equalled 'tomato', that case‘s console.log() would run.
+    The value of groceryItem is 'papaya', so the third case runs— Papayas are $1.29 is logged to the console.
+    The break keyword tells the computer to exit the block and not execute any more code or check any 
+    other cases inside the code block. Note: Without break keywords, the first matching case will run, 
+    but so will every subsequent case regardless of whether or not it matches—including the default. 
+    This behavior is different from if/else conditional statements that execute only one block of code.
+    At the end of each switch statement, there is a default statement. If none of the cases are true, 
+    then the code in the default statement will run.
+
+Review
+Way to go! Here are some of the major concepts for conditionals:
+
+An if statement checks a condition and will execute a task if that condition evaluates to true.
+if...else statements make binary decisions and execute different code blocks based on a provided condition.
+We can add more conditions using else if statements.
+Comparison operators, including <, >, <=, >=, ===, and !== can compare two values.
+The logical and operator, &&, or “and”, checks if both provided expressions are truthy.
+The logical operator ||, or “or”, checks if either provided expression is truthy.
+The bang operator, !, switches the truthiness and falsiness of a value.
+The ternary operator is shorthand to simplify concise if...else statements.
+A switch statement can be used to simplify the process of writing multiple else if statements. The break keyword stops the remaining cases from being checked and executed in a switch statement.
 */
