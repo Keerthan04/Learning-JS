@@ -38,6 +38,28 @@ function monitorCount(rows,columns){
 const numOfMonitors=monitorCount(4,5);
 console.log(`the number of monitors is: ${numOfMonitors}`);
 
+//Helper Functions
+function monitorCount(rows, columns) {
+  return rows * columns;
+}
+function costOfMonitors(rows,columns){
+  return monitorCount(rows,columns)*200;
+}
+const totalCost=costOfMonitors(5,4);
+console.log(totalCost);
+
+//function expressions
+const plantNeedsWater=function(day){//const used mostly(industrial practice)
+  if(day=== 'Wednesday'){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+console.log(plantNeedsWater('Tuesday'));
+
+
 /*
   What are Functions?
     When first learning how to calculate the area of a rectangle, there’s a sequence of steps to 
@@ -212,4 +234,78 @@ console.log(`the number of monitors is: ${numOfMonitors}`);
 
     The return keyword is powerful because it allows functions to produce an output. We can then save the 
     output to a variable for later use.
+
+  6.Helper Functions
+    We can also use the return value of a function inside another function. These functions being called 
+    within another function are often referred to as helper functions. Since each function is carrying out 
+    a specific task, it makes our code easier to read and debug if necessary.
+
+    If we wanted to define a function that converts the temperature from Celsius to Fahrenheit, we could
+    write two functions like:
+
+    function multiplyByNineFifths(number) {
+      return number * (9/5);
+    };
+
+    function getFahrenheit(celsius) {
+      return multiplyByNineFifths(celsius) + 32;
+    };
+
+    getFahrenheit(15); // Returns 59
+
+    In the example above:
+
+    getFahrenheit() is called and 15 is passed as an argument.
+    The code block inside of getFahrenheit() calls multiplyByNineFifths() and passes 15 as an argument.
+    multiplyByNineFifths() takes the argument of 15 for the number parameter.
+    The code block inside of multiplyByNineFifths() function multiplies 15 by (9/5), which evaluates to 27.
+    27 is returned back to the function call in getFahrenheit().
+    getFahrenheit() continues to execute. It adds 32 to 27, which evaluates to 59.
+    Finally, 59 is returned back to the function call getFahrenheit(15).
+    We can use functions to section off small bits of logic or tasks, then use them when we need to. 
+    Writing helper functions can help take large and difficult tasks and break them into smaller and more 
+    manageable tasks.
+
+  7.Function Expressions
+    Another way to define a function is to use a function expression. To define a function inside an 
+    expression, we can use the function keyword. In a function expression, the function name is usually 
+    omitted. A function with no name is called an anonymous function. A function expression is often stored 
+    in a variable in order to refer to it.
+
+    Consider the following function expression:
+      const addfun = function(height,width){
+        let area=width*height;
+        return area;
+      }
+      addfun(5,10);//calling
+    Declare a variable to make the variable’s name be the name, or identifier, of your function. 
+    Since the release of ES6, it is common practice to use const as the keyword to declare the variable.
+
+    Assign as that variable’s value an anonymous function created by using the function keyword followed 
+    by a set of parentheses with possible parameters. Then a set of curly braces that contain the 
+    function body.
+
+    To invoke a function expression, write the name of the variable in which the function is stored 
+    followed by parentheses enclosing any arguments being passed into the function.
+
+    variableName(argument1, argument2)
+
+    Unlike function declarations, function expressions are not hoisted so they cannot be called before 
+    they are defined.
+
+  8.Arrow Functions
+    ES6 introduced arrow function syntax, a shorter way to write functions by using the special 
+    “fat arrow” () => notation.
+
+    Arrow functions remove the need to type out the keyword function every time you need to create a 
+    function. Instead, you first include the parameters inside the ( ) and then add an arrow => that points 
+    to the function body surrounded in { } like this:
+
+    const rectangleArea = (width, height) => {
+      let area = width * height;
+      return area;
+    };
+
+    It’s important to be familiar with the multiple ways of writing functions because you will come across 
+    each of these when reading other JavaScript code.
 */
