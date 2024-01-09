@@ -22,6 +22,21 @@ sayThanks('keerthan');
 let myname='jaya';
 sayThanks(myname);
 
+//Default Parameters
+function makeShoppingList(item1='milk', item2='bread', item3='eggs'){
+  console.log(`Remember to buy ${item1}`);
+  console.log(`Remember to buy ${item2}`);
+  console.log(`Remember to buy ${item3}`);
+}
+makeShoppingList('a','b','c');
+makeShoppingList();
+
+//return statement
+function monitorCount(rows,columns){
+  return rows*columns;
+}
+const numOfMonitors=monitorCount(4,5);
+console.log(`the number of monitors is: ${numOfMonitors}`);
 
 /*
   What are Functions?
@@ -137,12 +152,12 @@ sayThanks(myname);
     By using parameters, calculateArea() can be reused to compute the area of any rectangle!
 
   4.Default Parameters
-    One of the features added in ES6 is the ability to use default parameters. Default parameters allow parameters to have a predetermined value in case there is no argument passed into the function or if the argument is undefined when called.
+    One of the features added in ES6 is the ability to use default parameters. Default parameters allow 
+    parameters to have a predetermined value in case there is no argument passed into the function or 
+    if the argument is undefined when called.
 
     Take a look at the code snippet below that uses a default parameter:
 
-
-    Explain
     function greeting (name = 'stranger') {
       console.log(`Hello, ${name}!`)
     }
@@ -150,11 +165,51 @@ sayThanks(myname);
     greeting('Nick') // Output: Hello, Nick!
     greeting() // Output: Hello, stranger!
 
-    In the example above, we used the = operator to assign the parameter name a default value of 'stranger'. This is useful to have in case we ever want to include a non-personalized default greeting!
+    In the example above, we used the = operator to assign the parameter name a default value of 'stranger'. 
+    This is useful to have in case we ever want to include a non-personalized default greeting!
 
-    When the code calls greeting('Nick') the value of the argument is passed in and, 'Nick', will override the default parameter of 'stranger' to log 'Hello, Nick!' to the console.
+    When the code calls greeting('Nick') the value of the argument is passed in and, 'Nick', will 
+    override the default parameter of 'stranger' to log 'Hello, Nick!' to the console.
 
-    When there isn’t an argument passed into greeting(), the default value of 'stranger' is used, and 'Hello, stranger!' is logged to the console.
+    When there isn’t an argument passed into greeting(), the default value of 'stranger' is used, and 
+    'Hello, stranger!' is logged to the console.
 
-    By using a default parameter, we account for situations when an argument isn’t passed into a function that is expecting an argument.
+    By using a default parameter, we account for situations when an argument isn’t passed into a function 
+    that is expecting an argument.
+
+  5.Return
+    When a function is called, the computer will run through the function’s code and evaluate the result. 
+    By default, the resulting value is undefined.
+
+    function rectangleArea(width, height) {
+      let area = width * height;
+    }
+    console.log(rectangleArea(5, 7)) // Prints undefined
+
+    In the code example, we defined our function to calculate the area of a width and height parameter. 
+    Then rectangleArea() is invoked with the arguments 5 and 7. But when we went to print the results 
+    we got undefined. Did we write our function wrong? No! In fact, the function worked fine, and the 
+    computer did calculate the area as 35, but we didn’t capture it. So how can we do that? With the keyword 
+    return!
+
+    using return keyword in a function
+    To pass back information from the function call, we use a return statement. To create a return 
+    statement, we use the return keyword followed by the value that we wish to return. Like we saw above, 
+    if the value is omitted, undefined is returned instead.
+
+    When a return statement is used in a function body, the execution of the function is stopped and the
+    code that follows it will not be executed. Look at the example below:
+
+    function rectangleArea(width, height) {
+      if (width < 0 || height < 0) {
+        return 'You need positive integers to calculate area!';
+      }
+      return width * height;
+    }
+
+    If an argument for width or height is less than 0, then rectangleArea() will return 'You need positive 
+    integers to calculate area!'. The second return statement width * height will not run.
+
+    The return keyword is powerful because it allows functions to produce an output. We can then save the 
+    output to a variable for later use.
 */
