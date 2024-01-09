@@ -67,6 +67,8 @@ const plantNeedsWaters = (day) => {
     return false;
   }
 };
+//consise arrow function
+const plantNeedsWaterss = day => day === 'Wednesday' ? true : false;//one parameter and no return 
 
 /*
   What are Functions?
