@@ -1,23 +1,23 @@
 //functions
 function getReminder(){
   console.log("Water the plants");
-}
+};
 function greetInSpanish(){
   console.log("Buenas tardes");
-}
+};
 getReminder();
 greetInSpanish();
 
 //function call
 function sayThanks(){
   console.log("Thank you for your purchase! We appreciate your business.");
-}
+};
 sayThanks();
 
 //parameters and argu pass
 function sayThanks(name) {
   console.log('Thank you for your purchase '+ name + '! We appreciate your business.');
-}
+};
 sayThanks('keerthan');
 let myname='jaya';
 sayThanks(myname);
@@ -27,24 +27,24 @@ function makeShoppingList(item1='milk', item2='bread', item3='eggs'){
   console.log(`Remember to buy ${item1}`);
   console.log(`Remember to buy ${item2}`);
   console.log(`Remember to buy ${item3}`);
-}
+};
 makeShoppingList('a','b','c');
 makeShoppingList();
 
 //return statement
 function monitorCount(rows,columns){
   return rows*columns;
-}
+};
 const numOfMonitors=monitorCount(4,5);
 console.log(`the number of monitors is: ${numOfMonitors}`);
 
 //Helper Functions
 function monitorCount(rows, columns) {
   return rows * columns;
-}
+};
 function costOfMonitors(rows,columns){
   return monitorCount(rows,columns)*200;
-}
+};
 const totalCost=costOfMonitors(5,4);
 console.log(totalCost);
 
@@ -56,9 +56,17 @@ const plantNeedsWater=function(day){//const used mostly(industrial practice)
   else{
     return false;
   }
-}
+};
 console.log(plantNeedsWater('Tuesday'));
 
+//arrow functions
+const plantNeedsWaters = (day) => {
+  if (day === 'Wednesday') {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 /*
   What are Functions?
@@ -308,4 +316,37 @@ console.log(plantNeedsWater('Tuesday'));
 
     It’s important to be familiar with the multiple ways of writing functions because you will come across 
     each of these when reading other JavaScript code.
+
+  9.Concise Body Arrow Functions
+    JavaScript also provides several ways to refactor arrow function syntax. The most condensed form of the 
+    function is known as concise body. We’ll explore a few of these techniques below:
+
+      const a = () => {};
+      const b = weight => {};
+      const c = (weight,height) => {};
+
+    Functions that take only a single parameter do not need that parameter to be enclosed in parentheses. 
+    However, if a function takes zero or multiple parameters, parentheses are required.
+
+    showcasing how arrow functions parameters differ for different amounts of parameters
+    A function body composed of a single-line block does not need curly braces. Without the curly braces, 
+    whatever that line evaluates will be automatically returned. The contents of the block should immediately
+    follow the arrow => and the return keyword can be removed. This is referred to as implicit return.
+
+    comparing single line and multiline arrow functions
+    So if we have a function:
+
+    const squareNum = (num) => {
+      return num * num;
+    };
+
+    We can refactor the function to:
+
+    const squareNum = num => num * num;
+
+    Notice the following changes:
+
+    The parentheses around num have been removed, since it has a single parameter.
+    The curly braces { } have been removed since the function consists of a single-line block.
+    The return keyword has been removed since the function consists of a single-line block.
 */
