@@ -85,6 +85,11 @@ function removeElement(newArr){
 removeElement(concept);
 console.log(concept);
 
+//nested arrays
+let numberClusters=[[1,2],[3,4],[5,6]];
+const target= numberClusters[2][1];
+console.log(target);
+
 /*
   Arrays
     Organizing and storing data is a foundational concept of programming.
@@ -278,4 +283,47 @@ console.log(concept);
     change will be maintained outside the function as well. You might also see this concept explained 
     as pass-by-reference since what we’re actually passing to the function is a reference to where the 
     variable memory is stored and changing the memory.
+
+  9.Nested Arrays
+    Earlier we mentioned that arrays can store other arrays. When an array contains another array it is known 
+    as a nested array. Examine the example below:
+
+    const nestedArr = [[1], [2, 3]];
+
+    To access the nested arrays we can use bracket notation with the index value, just like we did to 
+    access any other element:
+
+    const nestedArr = [[1], [2, 3]];
+
+    console.log(nestedArr[1]); // Output: [2, 3]
+
+    Notice that nestedArr[1] will grab the element in index 1 which is the array [2, 3]. Then, if we 
+    wanted to access the elements within the nested array we can chain, or add on, more bracket notation 
+    with index values.
+
+    const nestedArr = [[1], [2, 3]];
+
+    console.log(nestedArr[1]); // Output: [2, 3]
+    console.log(nestedArr[1][0]); // Output: 2
+
+    In the second console.log() statement, we have two bracket notations chained to nestedArr. We know 
+    that nestedArr[1] is the array [2, 3]. Then to grab the first element from that array, we use 
+    nestedArr[1][0] and we get the value of 2.
+
+Review Arrays
+Nice work! In this lesson, we learned these concepts regarding arrays:
+
+Arrays are lists that store data in JavaScript.
+Arrays are created with brackets [].
+Each item inside of an array is at a numbered position, or index, starting at 0.
+We can access one item in an array using its index, with syntax like: myArray[0].
+We can also change an item in an array using its index, with syntax like myArray[0] = 'new string';
+Arrays have a length property, which allows you to see how many items are in an array.
+Arrays have their own methods, including .push() and .pop(), which add and remove items from an array, respectively.
+Arrays have many methods that perform different tasks, such as .slice() and .shift(), you can find documentation at the Mozilla Developer Network website.
+Some built-in methods are mutating, meaning the method will change the array, while others are not mutating. You can always check the documentation.
+Variables that contain arrays can be declared with let or const. Even when declared with const, arrays are still mutable. However, a variable declared with const cannot be reassigned.
+Arrays mutated inside of a function will keep that change even outside the function.
+Arrays can be nested inside other arrays.
+To access elements in nested arrays chain indices using bracket notation.
 */
