@@ -28,8 +28,8 @@ function makeShoppingList(item1='milk', item2='bread', item3='eggs'){
   console.log(`Remember to buy ${item2}`);
   console.log(`Remember to buy ${item3}`);
 };
-makeShoppingList('a','b','c');
-makeShoppingList();
+makeShoppingList('a','b','c');//when parameters passed,parameters are printed
+makeShoppingList();//if no parameters then default parameters are printed;
 
 //return statement
 function monitorCount(rows,columns){
