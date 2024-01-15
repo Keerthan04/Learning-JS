@@ -34,6 +34,57 @@ utensils[3] = 'Spoon';//const array the value like elements can be changed
 console.log(utensils);
 //utensils=['spoon']//the entire array being reassigned with another cant like in let
 
+//.length propertly
+const objectives = ['Learn a new language', 'Read 52 books', 'Run a marathon'];
+console.log(objectives.length);
+
+//.push method
+const chores = ['wash dishes', 'do laundry', 'take out trash'];
+chores.push('a','b');
+console.log(chores);
+
+//.pop method
+const choress = ['wash dishes', 'do laundry', 'take out trash', 'cook dinner', 'mop floor'];
+let removed= choress.pop();
+console.log(choress);
+console.log(removed);
+
+//different array methods
+const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+
+groceryList.shift();
+
+console.log(groceryList);
+
+groceryList.unshift('popcorn');
+
+console.log(groceryList);
+
+console.log(groceryList.slice(1, 4));
+
+console.log(groceryList);
+
+const pastaIndex = groceryList.indexOf('pasta');
+
+console.log(pastaIndex);
+//read more by refering docs the other methods
+//ex-https://www.codecademy.com/resources/docs/javascript/arrays(refer this)
+
+//arrays functions and scope
+const concept = ['arrays', 'can', 'be', 'mutated'];
+
+function changeArr(arr){
+  arr[3] = 'MUTATED';
+}
+
+changeArr(concept);
+console.log(concept);//passing array to function-pass by reference
+function removeElement(newArr){
+  newArr.pop();
+}
+removeElement(concept);
+console.log(concept);
+
 /*
   Arrays
     Organizing and storing data is a foundational concept of programming.
@@ -154,5 +205,77 @@ console.log(utensils);
     We use dot notation, chaining a period with the property name to the array, to access the length 
     property of the newYearsResolutions array.
     Then we log the length of newYearsResolution to the console.
-    Since newYearsResolution has two elements, 2 would be logged to the console
+    Since newYearsResolution has two elements, 2 would be logged to the console.
+
+  6.The .push() Method
+    Let’s learn about some built-in JavaScript methods that make working with arrays easier. These methods 
+    are specifically called on arrays to make common tasks, like adding and removing elements, more 
+    straightforward.
+
+    One method, .push(), allows us to add items to the end of an array. Here is an example of 
+    how this is used:
+
+    const itemTracker = ['item 0', 'item 1', 'item 2'];
+
+    itemTracker.push('item 3', 'item 4');
+
+    console.log(itemTracker); 
+    // Output: ['item 0', 'item 1', 'item 2', 'item 3', 'item 4'];
+
+    So, how does .push() work?
+
+    We access the push method by using dot notation, connecting push to itemTracker with a period.
+    Then we call it like a function. That’s because .push() is a function and one that JavaScript allows us 
+    to use right on an array.
+    .push() can take a single argument or multiple arguments separated by commas. In this case, we’re adding 
+    two elements: 'item 3' and 'item 4' to itemTracker.
+    Notice that .push() changes, or mutates, itemTracker. You might also see .push() referred to as a 
+    destructive array method since it changes the initial array.
+
+  7.The .pop() Method
+    Another array method, .pop(), removes the last item of an array.
+
+    const newItemTracker = ['item 0', 'item 1', 'item 2'];
+
+    const removed = newItemTracker.pop();
+
+    console.log(newItemTracker); 
+    // Output: [ 'item 0', 'item 1' ]
+    console.log(removed);
+    // Output: item 2
+
+    In the example above, calling .pop() on the newItemTracker array removed item 2 from the end.
+    .pop() does not take any arguments, it simply removes the last element of newItemTracker.
+    .pop() returns the value of the last element. In the example, we store the returned value in a variable 
+    removed to be used for later.
+    .pop() is a method that mutates the initial array.
+
+  8.Arrays and Functions
+    Throughout the lesson we went over arrays being mutable, or changeable. Well what happens if we try to 
+    change an array inside a function? Does the array keep the change after the function call or is it scoped 
+    to inside the function?
+
+    Take a look at the following example where we call .push() on an array inside a function. Recall, 
+    the .push() method mutates, or changes, an array:
+
+    const flowers = ['peony', 'daffodil', 'marigold'];
+
+    function addFlower(arr) {
+      arr.push('lily');
+    }
+
+    addFlower(flowers);
+
+    console.log(flowers); // Output: ['peony', 'daffodil', 'marigold', 'lily']
+
+    Let’s go over what happened in the example:
+
+    The flowers array that has 3 elements.
+    The function addFlower() has a parameter of arr uses .push() to add a 'lily' element into arr.
+    We call addFlower() with an argument of flowers which will execute the code inside addFlower.
+    We check the value of flowers and it now includes the 'lily' element! The array was mutated!
+    So when you pass an array into a function, if the array is mutated inside the function, that 
+    change will be maintained outside the function as well. You might also see this concept explained 
+    as pass-by-reference since what we’re actually passing to the function is a reference to where the 
+    variable memory is stored and changing the memory.
 */
