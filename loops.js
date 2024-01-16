@@ -10,6 +10,48 @@ for(let i=0;i<vacationSpots.length;i++)
   console.log(`I would love to visit ${vacationSpots[i]}`);
 }
 
+//nested loops
+let bobsFollowers=["keer","dar","sou","ava"];
+let tinasFollowers=["keer","dar","pav"];
+let mutualFollowers=[];
+for(let i=0;i<bobsFollowers.length;i++){
+  for(let j=0;j<tinasFollowers.length;j++){
+    if(bobsFollowers[i]===tinasFollowers[j]){
+      mutualFollowers.push(bobsFollowers[i]);
+    }
+  }
+}
+console.log(mutualFollowers);
+
+//while loop
+const cards = ['diamond', 'spade', 'heart', 'club'];
+
+// Write your code below
+let currentCard;
+while(currentCard!= 'spade'){
+  currentCard = cards[Math.floor(Math.random() * 4)];
+  console.log(currentCard);
+}
+
+//do while loop
+let cupsOfSugarNeeded = 4;
+let cupsAdded=0;
+do{
+  cupsAdded++;
+  console.log(cupsAdded);
+}while(cupsAdded<cupsOfSugarNeeded);
+
+//use of break
+const rapperArray = ["Lil' Kim", "Jay-Z", "Notorious B.I.G.", "Tupac"];
+
+// Write your code below
+for(let i=0;i<rapperArray.length;i++){
+  console.log("And if you don't know, now you know.");
+  console.log(rapperArray[i]);
+  if(rapperArray[i]==='Notorious B.I.G.'){
+    break;
+  }
+}
 
 /*
   Loops
@@ -101,4 +143,141 @@ for(let i=0;i<vacationSpots.length;i++)
 
     With for loops, it’s easier for us to work with elements in arrays.
 
+  4.Nested Loops
+    When we have a loop running inside another loop, we call that a nested loop. One use for a nested for 
+    loop is to compare the elements in two arrays. For each round of the outer for loop, the inner for 
+    loop will run completely.
+
+    Let’s look at an example of a nested for loop:
+
+    const myArray = [6, 19, 20];
+    const yourArray = [19, 81, 2];
+    for (let i = 0; i < myArray.length; i++) {
+      for (let j = 0; j < yourArray.length; j++) {
+        if (myArray[i] === yourArray[j]) {
+          console.log('Both arrays have the number: ' + yourArray[j]);
+        }
+      }
+    }
+
+    Let’s think about what’s happening in the nested loop in our example. For each element in the outer 
+    loop array, myArray, the inner loop will run in its entirety comparing the current element from the 
+    outer array, myArray[i], to each element in the inner array, yourArray[j]. When it finds a match, 
+    it prints a string to the console.
+
+  5.The While Loop
+    You’re doing great! We’re going to teach you about a different type of loop: the while loop. To start, 
+    let’s convert a for loop into a while loop:
+
+    // A for loop that prints 1, 2, and 3
+    for (let counterOne = 1; counterOne < 4; counterOne++){
+      console.log(counterOne);
+    }
+
+    // A while loop that prints 1, 2, and 3
+    let counterTwo = 1;
+    while (counterTwo < 4) {
+      console.log(counterTwo);
+      counterTwo++;
+    }
+
+    Let’s break down what’s happening with our while loop syntax:
+
+    The counterTwo variable is declared before the loop. We can access it inside our while loop since it’s in
+    the global scope.
+    We start our loop with the keyword while followed by our stopping condition, or test condition. 
+    This will be evaluated before each round of the loop. While the condition evaluates to true, the 
+    block will continue to run. Once it evaluates to false the loop will stop.
+    Next, we have our loop’s code block which prints counterTwo to the console and increments counterTwo.
+    What would happen if we didn’t increment counterTwo inside our block? If we didn’t include this, 
+    counterTwo would always have its initial value, 1. That would mean the testing condition 
+    counterTwo < 4 would always evaluate to true and our loop would never stop running! Remember, 
+    this is called an infinite loop and it’s something we always want to avoid. Infinite loops can 
+    take up all of your computer’s processing power potentially freezing your computer.
+
+    So you may be wondering when to use a while loop! The syntax of a while loop is ideal when we
+    don’t know in advance how many times the loop should run. Think of eating like a while loop: when you 
+    start taking bites, you don’t know the exact number you’ll need to become full. Rather you’ll eat 
+    while you’re hungry. In situations when we want a loop to execute an undetermined number of times, 
+    while loops are the best choice.
+
+  6.Do...While Statements
+    In some cases, you want a piece of code to run at least once and then loop based on a specific 
+    condition after its initial run. This is where the do...while statement comes in.
+
+    A do...while statement says to do a task once and then keep doing it until a specified condition is 
+    no longer met. The syntax for a do...while statement looks like this:
+
+    let countString = '';
+    let i = 0;
+
+    do {
+      countString = countString + i;
+      i++;
+    } while (i < 5);
+
+    console.log(countString);
+
+    In this example, the code block makes changes to the countString variable by appending the string 
+    form of the i variable to it. First, the code block after the do keyword is executed once. Then the 
+    condition is evaluated. If the condition evaluates to true, the block will execute again. The looping 
+    stops when the condition evaluates to false.
+
+    Note that the while and do...while loop are different! Unlike the while loop, do...while will run at 
+    least once whether or not the condition evaluates to true.
+
+    const firstMessage = 'I will print!';
+    const secondMessage = 'I will not print!'; 
+
+    // A do while with a stopping condition that evaluates to false
+    do {
+    console.log(firstMessage)
+    } while (true === false);
+
+    // A while loop with a stopping condition that evaluates to false
+    while (true === false){
+      console.log(secondMessage)
+    };
+
+  7.The break Keyword
+    Imagine we’re looking to adopt a dog. We plan to go to the shelter every day for a year and then 
+    give up. But what if we meet our dream dog on day 65? We don’t want to keep going to the shelter 
+    for the next 300 days just because our original plan was to go for a whole year. In our code, when 
+    we want to stop a loop from continuing to execute even though the original stopping condition we 
+    wrote for our loop hasn’t been met, we can use the keyword break.
+
+    The break keyword allows programs to “break” out of the loop from within the loop’s block.
+
+    Let’s check out the syntax of a break keyword:
+
+    for (let i = 0; i < 99; i++) {
+      if (i > 2 ) {
+        break;
+      }
+      console.log('Banana.');
+    }
+
+    console.log('Orange you glad I broke out the loop!');
+
+    This is the output for the above code:
+
+    Banana.
+    Banana.
+    Banana.
+    Orange you glad I broke out the loop!
+
+    break statements can be especially helpful when we’re looping through large data structures! With 
+    breaks, we can add test conditions besides the stopping condition, and exit the loop when they’re met.
+
+Review
+Great job! In this lesson, we learned how to write cleaner code with loops. You now know:
+
+Loops perform repetitive actions so we don’t have to code that process manually every time.
+How to write for loops with an iterator variable that increments or decrements
+How to use a for loop to iterate through an array
+A nested for loop is a loop inside another loop
+while loops allow for different types of stopping conditions
+Stopping conditions are crucial for avoiding infinite loops.
+do...while loops run code at least once— only checking the stopping condition after the first execution
+The break keyword allows programs to leave a loop during the execution of its block
 */
