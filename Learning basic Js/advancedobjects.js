@@ -66,6 +66,75 @@ const robot = {
   roboot.numOfSensors=100;//goes to func and 40 as parameter if _numof.. then directly will be
   console.log(roboot.numOfSensors);//returning getter ka if _numOf.. then normal ka
 
+  //creating factory functions
+  const robotFactory = (model,mobile)=>{
+    return {
+      model: model,
+      mobile: mobile,
+      beep(){
+        console.log('Beep Boop');
+      }
+    }
+  }
+  const tinCan = robotFactory('P-500',true);
+  console.log(tinCan.beep());
+
+  //property value shorthand
+  const robotFactorys = (model, mobile) => {
+    return {
+      model,
+      mobile,
+      beep() {
+        console.log('Beep Boop');
+      }
+    }
+  }
+  
+  // To check that the property value shorthand technique worked:
+  const newRobot = robotFactorys('P-501', false)
+  console.log(newRobot.model)
+  console.log(newRobot.mobile)
+
+  //destructors usage
+  const rrobot = {
+    model: '1E78V2',
+    energyLevel: 100,
+    functionality: {
+      beep() {
+        console.log('Beep Boop');
+      },
+      fireLaser() {
+        console.log('Pew Pew');
+      },
+    }
+  };
+  const {functionality} = rrobot; 
+  functionality.beep()
+  functionality.fireLaser()
+
+  //usage of builtin methods(READ MDN DOC VVIP)
+  const robottt = {
+	model: 'SAL-1000',
+  mobile: true,
+  sentient: false,
+  armor: 'Steel-plated',
+  energyLevel: 75
+};
+
+// What is missing in the following method call?
+const robotKeys = Object.keys(robottt);
+
+console.log(robotKeys);
+
+// Declare robotEntries below this line:
+const robotEntries = Object.entries(robottt)
+console.log(robotEntries);
+
+// Declare newRobot below this line:
+const newRobots = Object.assign({laserBlaster: true, voiceRecognition: true}, robottt);
+
+console.log(newRobots);
+
 /*
   Advanced Objects Introduction
     Remember, objects in JavaScript are containers that store data and functionality. In this lesson, we will build upon the fundamentals of creating objects and explore some advanced concepts.
@@ -276,4 +345,90 @@ const robot = {
     monsterFactory in place, we don’t have to create an object literal every time we need a new monster. 
     Instead, we can invoke the monsterFactory function with the necessary arguments to take over the world 
     make a monster for us!
+
+  6.Property Value Shorthand
+    ES6 introduced some new shortcuts for assigning properties to variables known as destructuring.
+
+    In the previous exercise, we created a factory function that helped us create objects. We had to assign each property a key and value even though the key name was the same as the parameter name we assigned to it. To remind ourselves, here’s a truncated version of the factory function:
+
+    const monsterFactory = (name, age) => {
+    return { 
+        name: name,
+        age: age
+    }
+    };
+
+    Imagine if we had to include more properties, that process would quickly become tedious! But we can use a destructuring technique, called property value shorthand, to save ourselves some keystrokes. The example below works exactly like the example above:
+
+    const monsterFactory = (name, age) => {
+    return { 
+        name,
+        age 
+    }
+    };
+
+    Notice that we don’t have to repeat ourselves for property assignments!
+
+  7.Destructured Assignment
+    We often want to extract key-value pairs from objects and save them as variables. Take for example the 
+    following object:
+
+    const vampire = {
+    name: 'Dracula',
+    residence: 'Transylvania',
+    preferences: {
+        day: 'stay inside',
+        night: 'satisfy appetite'
+    }
+    };
+
+    If we wanted to extract the residence property as a variable, we could use the following code:
+
+    const residence = vampire.residence; 
+    console.log(residence); // Prints 'Transylvania' 
+
+    However, we can also take advantage of a destructuring technique called destructured assignment to save 
+    ourselves some keystrokes. In destructured assignment we create a variable with the name of an object’s 
+    key that is wrapped in curly braces { } and assign to it the object. Take a look at the example below:
+
+    const { residence } = vampire; 
+    console.log(residence); // Prints 'Transylvania'
+
+    Look back at the vampire object’s properties in the first code example. Then, in the example above, 
+    we declare a new variable residence that extracts the value of the residence property of vampire. 
+    When we log the value of residence to the console, 'Transylvania' is printed.
+
+    We can even use destructured assignment to grab nested properties of an object:
+
+    const { day } = vampire.preferences; 
+    console.log(day); // Prints 'stay inside'
+
+  8.Built-in Object Methods
+    In the previous exercises we’ve been creating instances of objects that have their own methods. But, we 
+    can also take advantage of built-in methods for Objects!
+
+    For example, we have access to object instance methods like: .hasOwnProperty(), .valueOf(), and many 
+    more! Practice your documentation reading skills and check out: MDN’s object instance documentation.
+
+    There are also useful Object class methods such as Object.assign(), Object.entries(), and Object.keys() 
+    just to name a few. For a comprehensive list, browse: MDN’s object instance documentation.
+
+    Let’s get acquainted with some of these methods and their documentation.
+
+Review
+Congratulations on finishing Advanced Objects!
+
+Let’s review the concepts covered in this lesson:
+
+The object that a method belongs to is called the calling object.
+The this keyword refers to the calling object and can be used to access properties of the calling object.
+Methods do not automatically have access to other internal properties of the calling object.
+The value of this depends on where the this is being accessed from.
+We cannot use arrow functions as methods if we want to access other internal properties.
+JavaScript objects do not have built-in privacy, rather there are conventions to follow to notify other developers about the intent of the code.
+The usage of an underscore before a property name means that the original developer did not intend for that property to be directly changed.
+Setters and getter methods allow for more detailed ways of accessing and assigning properties.
+Factory functions allow us to create object instances quickly and repeatedly.
+There are different ways to use object destructuring: one way is the property value shorthand and another is destructured assignment.
+As with any concept, it is a good skill to learn how to use the documentation with objects!
 */
