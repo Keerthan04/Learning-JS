@@ -42,6 +42,30 @@ const robot = {
   };
   console.log(robott.energyLevel);
 
+  //setters
+  const roobot = {
+    _model: '1E78V2',
+    _energyLevel: 100,
+    _numOfSensors: 15,
+    get numOfSensors(){//same name for get and set but both are diff see
+      if(typeof this._numOfSensors === 'number'){
+        return this._numOfSensors;
+      } else {
+        return 'Sensors are currently down.'
+      }
+    },
+    set numOfSensors(num){
+      if((typeof(num)==='number') && (num>=0)){
+        this._numOfSensors = num;
+      }
+      else{
+        console.log('Pass in a number that is greater than or equal to 0');
+      }
+    }
+  };
+  roboot.numOfSensors=100;//goes to func and 40 as parameter if _numof.. then directly will be
+  console.log(roboot.numOfSensors);//returning getter ka if _numOf.. then normal ka
+
 /*
   Advanced Objects Introduction
     Remember, objects in JavaScript are containers that store data and functionality. In this lesson, we will build upon the fundamentals of creating objects and explore some advanced concepts.
@@ -179,4 +203,77 @@ const robot = {
     same name as the getter/setter function. If we do so, then calling the method will result in an infinite
     call stack error. One workaround is to add an underscore before the property name like we did in the 
     example above.
+
+  4.Setters
+    Along with getter methods, we can also create setter methods which reassign values of existing 
+    properties within an object. Let’s see an example of a setter method:
+
+    const person = {
+    _age: 37,
+    set age(newAge){
+        if (typeof newAge === 'number'){
+        this._age = newAge;
+        } else {
+        console.log('You must assign a number to age');
+        }
+    }
+    };
+
+    Notice that in the example above:
+
+    We can perform a check for what value is being assigned to this._age.
+    When we use the setter method, only values that are numbers will reassign this._age
+    There are different outputs depending on what values are used to reassign this._age.
+    Then to use the setter method:
+
+    person.age = 40;
+    console.log(person._age); // Logs: 40
+    person.age = '40'; // Logs: You must assign a number to age
+
+    Setter methods like age do not need to be called with a set of parentheses. Syntactically, it looks 
+    like we’re reassigning the value of a property.
+
+    Like getter methods, there are similar advantages to using setter methods that include checking input, 
+    performing actions on properties, and displaying a clear intention for how the object is supposed to be 
+    used. Nonetheless, even with a setter method, it is still possible to directly reassign properties. For 
+    example, in the example above, we can still set ._age directly:
+
+    person._age = 'forty-five'
+    console.log(person._age); // Prints forty-five
+
+  5.Factory Functions
+    So far we’ve been creating objects individually, but there are times where we want to create many 
+    instances of an object quickly. Here’s where factory functions come in. A real world factory 
+    manufactures multiple copies of an item quickly and on a massive scale. A factory function is a function 
+    that returns an object and can be reused to make multiple object instances. Factory functions can also 
+    have parameters allowing us to customize the object that gets returned.
+
+    Let’s say we wanted to create an object to represent monsters in JavaScript. There are many different 
+    types of monsters and we could go about making each monster individually but we can also use a factory 
+    function to make our lives easier. To achieve this diabolical plan of creating multiple monsters objects,
+    we can use a factory function that has parameters:
+
+    const monsterFactory = (name, age, energySource, catchPhrase) => {
+    return { 
+        name: name,
+        age: age, 
+        energySource: energySource,
+        scare() {
+        console.log(catchPhrase);
+        } 
+    }
+    };
+
+    In the monsterFactory function above, it has four parameters and returns an object that has the 
+    properties: name, age, energySource, and scare(). To make an object that represents a specific monster 
+    like a ghost, we can call monsterFactory with the necessary arguments and assign the return value to a 
+    variable:
+
+    const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');
+    ghost.scare(); // 'BOO!'
+
+    Now we have a ghost object as a result of calling monsterFactory() with the needed arguments. With 
+    monsterFactory in place, we don’t have to create an object literal every time we need a new monster. 
+    Instead, we can invoke the monsterFactory function with the necessary arguments to take over the world 
+    make a monster for us!
 */
