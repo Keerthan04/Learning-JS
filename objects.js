@@ -23,6 +23,104 @@ let propName =  'Active Mission';
 // Write your code below
 let isActive=spaceship[propName];
 console.log(isActive);
+
+//assigning properties
+let spaceships = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth',
+  color: 'silver',
+  'Secret Mission' : 'Discover life outside of Earth.'
+};
+
+// Write your code below
+spaceships.color='glorious gold';
+spaceships["numEngines"]=5;
+delete spaceships['Secret Mission'];
+
+//methods
+let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
+
+// Write your code below
+
+let alienShip = {
+  retreat() {
+    console.log(retreatMessage)
+  },
+  takeOff() {
+    console.log('Spim... Borp... Glix... Blastoff!')
+  }
+};
+
+alienShip.retreat();
+
+alienShip.takeOff();
+
+//nested objects(VVIP)
+let spaceshipss = {
+  passengers: [{name: 'Space Dog'}], //array of objects and 0th obj and name is property spaceships.passengers[0]//gets the first in array
+  telescope: {
+    yearBuilt: 2018,
+    model: "91031-XLT",
+    focalLength: 2032 
+  },
+  crew: {
+    captain: { 
+      name: 'Sandra', 
+      degree: 'Computer Engineering', 
+      encourageTeam() { console.log('We got this!') },
+     'favorite foods': ['cookies', 'cakes', 'candy', 'spinach'] }
+  },
+  engine: {
+    model: "Nimbus2000"
+  },
+  nanoelectronics: {
+    computer: {
+      terabytes: 100,
+      monitors: "HD"
+    },
+    'back-up': {
+      battery: "Lithium",
+      terabytes: 50
+    }
+  }
+}; 
+
+let capFave = spaceshipss.crew.captain['favorite foods'][0];
+
+let firstPassenger = spaceshipss.passengers[0];
+
+//looping through objects
+let spaceshi = {
+  crew: {
+  captain: { 
+      name: 'Lily', 
+      degree: 'Computer Engineering', 
+      cheerTeam() { console.log('You got this!') } 
+      },
+  'chief officer': { 
+      name: 'Dan', 
+      degree: 'Aerospace Engineering', 
+      agree() { console.log('I agree, captain!') } 
+      },
+  medic: { 
+      name: 'Clementine', 
+      degree: 'Physics', 
+      announce() { console.log(`Jets on!`) } },
+  translator: {
+      name: 'Shauna', 
+      degree: 'Conservation Science', 
+      powerFuel() { console.log('The tank is full!') } 
+      }
+  }
+}; 
+
+// Write your code below
+for (let crewMember in spaceshi.crew) {
+console.log(`${crewMember}: ${spaceshi.crew[crewMember].name}`);
+}
+for (let crewMember in spaceshi.crew) {
+console.log(`${spaceshi.crew[crewMember].name}: ${spaceshi.crew[crewMember].degree}`);
+}
 /*
   Introduction to Objects
     It’s time to learn more about the basic structure that permeates nearly every aspect of JavaScript 
@@ -119,6 +217,222 @@ console.log(isActive);
 
     If we tried to write our returnAnyProp() function with dot notation (objectName.propName) the computer 
     would look for a key of 'propName' on our object and not the value of the propName parameter.
+
+  4.Property Assignment
+    Once we’ve defined an object, we’re not stuck with all the properties we wrote. Objects are mutable 
+    meaning we can update them after we create them!
+
+    We can use either dot notation, ., or bracket notation, [], and the assignment operator, = to add new 
+    key-value pairs to an object or change an existing property.
+
+    diagram showing how an object followed by brackets ([]) with the property name as a string can be 
+    reassigned to a new value. This same idea applies for accessing a property using dot notation which has 
+    the object name, followed by a dot and the name of the property
+
+    One of two things can happen with property assignment:
+
+    If the property already exists on the object, whatever value it held before will be replaced with 
+    the newly assigned value.
+    If there was no property with that name, a new property will be added to the object.
+    It’s important to know that although we can’t reassign an object declared with const, we can 
+    still mutate it, meaning we can add new properties and change the properties that are there.
+
+    const spaceship = {type: 'shuttle'};
+    spaceship = {type: 'alien'}; // TypeError: Assignment to constant variable.
+    spaceship.type = 'alien'; // Changes the value of the type property
+    spaceship.speed = 'Mach 5'; // Creates a new key of 'speed' with a value of 'Mach 5'
+
+    You can delete a property from an object with the delete operator.
+
+    const spaceship = {
+      'Fuel Type': 'Turbo Fuel',
+      homePlanet: 'Earth',
+      mission: 'Explore the universe' 
+    };
+    
+    delete spaceship.mission;  // Removes the mission property
+
+  5.Methods
+    When the data stored on an object is a function we call that a method. A property is what an object has, 
+    while a method is what an object does.
+
+    Do object methods seem familiar? That’s because you’ve been using them all along! For example console is 
+    a global JavaScript object and .log() is a method on that object. Math is also a global JavaScript 
+    object and .floor() is a method on it.
+
+    We can include methods in our object literals by creating ordinary, colon-separated key-value pairs.
+    The key serves as our method’s name, while the value is an anonymous function expression.
+
+    const alienShip = {
+      invade: function () { 
+        console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called 
+        New Xaculon.')
+      }
+    };
+
+    With the new method syntax introduced in ES6 we can omit the colon and the function keyword.
+
+    const alienShip = {
+      invade () { 
+        console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called 
+        New Xaculon.')
+      }
+    };
+
+    Object methods are invoked by appending the object’s name with the dot operator followed by the 
+    method name and parentheses:
+
+    alienShip.invade(); // Prints 'Hello! We have come to dominate your planet. Instead of Earth, it 
+    shall be called New Xaculon.'
+
+  6.Nested Objects
+    In application code, objects are often nested— an object might have another object as a property which 
+    in turn could have a property that’s an array of even more objects!
+
+    In our spaceship object, we want a crew object. This will contain all the crew members who do important 
+    work on the craft. Each of those crew members are objects themselves. They have properties like name, 
+    and degree, and they each have unique methods based on their roles. We can also nest other objects in 
+    the spaceship such as a telescope or nest details about the spaceship’s computers inside a parent 
+    nanoelectronics object.
+
+    const spaceship = {
+        telescope: {
+            yearBuilt: 2018,
+            model: '91031-XLT',
+            focalLength: 2032 
+        },
+        crew: {
+            captain: { 
+                name: 'Sandra', 
+                degree: 'Computer Engineering', 
+                encourageTeam() { console.log('We got this!') } 
+            }
+        },
+        engine: {
+            model: 'Nimbus2000'
+        },
+        nanoelectronics: {
+            computer: {
+                terabytes: 100,
+                monitors: 'HD'
+            },
+            'back-up': {
+              battery: 'Lithium',
+              terabytes: 50
+            }
+        }
+    }; 
+
+    We can chain operators to access nested properties. We’ll have to pay attention to which operator makes 
+    sense to use in each layer. It can be helpful to pretend you are the computer and evaluate each 
+    expression from left to right so that each operation starts to feel a little more manageable.
+
+    spaceship.nanoelectronics['back-up'].battery; // Returns 'Lithium'
+
+    In the preceding code:
+
+    First the computer evaluates spaceship.nanoelectronics, which results in an object containing the 
+    back-up and computer objects.
+    We accessed the back-up object by appending ['back-up'].
+    The back-up object has a battery property, accessed with .battery which returned the value 
+    stored there: 'Lithium'
+
+7.Pass By Reference
+    Objects are passed by reference. This means when we pass a variable assigned to an object into a 
+    function as an argument, the computer interprets the parameter name as pointing to the space in 
+    memory holding that object. As a result, functions which change object properties actually mutate 
+    the object permanently (even when the object is assigned to a const variable).
+
+    const spaceship = {
+      homePlanet : 'Earth',
+      color : 'silver'
+    };
+    
+    let paintIt = obj => {
+      obj.color = 'glorious gold'
+    };
+    
+    paintIt(spaceship);
+    
+    spaceship.color // Returns 'glorious gold'
+    
+
+    Our function paintIt() permanently changed the color of our spaceship object. However, reassignment 
+    of the spaceship variable wouldn’t work in the same way:
+
+    let spaceship = {
+      homePlanet : 'Earth',
+      color : 'red'
+    };
+    let tryReassignment = obj => {
+      obj = {
+        identified : false, 
+        'transport type' : 'flying'
+      }
+      console.log(obj) // Prints {'identified': false, 'transport type': 'flying'}
+    
+    };
+    tryReassignment(spaceship) // The attempt at reassignment does not work.
+    spaceship // Still returns {homePlanet : 'Earth', color : 'red'};
+    
+    spaceship = {
+      identified : false, 
+      'transport type': 'flying'
+    }; // Regular reassignment still works.
+
+    Let’s look at what happened in the code example:
+
+    We declared this spaceship object with let. This allowed us to reassign it to a new object with 
+    identified and 'transport type' properties with no problems.
+    When we tried the same thing using a function designed to reassign the object passed into it, the 
+    reassignment didn’t stick (even though calling console.log() on the object produced the expected result).
+    When we passed spaceship into that function, obj became a reference to the memory location of the 
+    spaceship object, but not to the spaceship variable. This is because the obj parameter of the 
+    tryReassignment() function is a variable in its own right. The body of tryReassignment() has no 
+    knowledge of the spaceship variable at all!
+    When we did the reassignment in the body of tryReassignment(), the obj variable came to refer to 
+    the memory location of the object {'identified' : false, 'transport type' : 'flying'}, while the 
+    spaceship variable was completely unchanged from its earlier value
+
+8.Looping Through Objects
+  Loops are programming tools that repeat a block of code until a condition is met. We learned how to 
+  iterate through arrays using their numerical indexing, but the key-value pairs in objects aren’t ordered! 
+  JavaScript has given us alternative solution for iterating through objects with the for...in syntax .
+
+  for...in will execute a given block of code for each property in an object.
+
+  let spaceship = {
+    crew: {
+      captain: { 
+        name: 'Lily', 
+        degree: 'Computer Engineering', 
+        cheerTeam() { console.log('You got this!') } 
+      },
+      'chief officer': { 
+        name: 'Dan', 
+        degree: 'Aerospace Engineering', 
+        agree() { console.log('I agree, captain!') } 
+      },
+      medic: { 
+        name: 'Clementine', 
+        degree: 'Physics', 
+        announce() { console.log(`Jets on!`) } },
+      translator: {
+        name: 'Shauna', 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log('The tank is full!') } 
+      }
+    }
+  }; 
+
+  // for...in
+  for (let crewMember in spaceship.crew) {
+    console.log(`${crewMember}: ${spaceship.crew[crewMember].name}`);
+  }
+
+  Our for...in will iterate through each element of the spaceship.crew object. In each iteration, 
+  the variable crewMember is set to one of spaceship.crew‘s keys, enabling us to log a list of 
+  crew members’ role and name.
 
 
 */
