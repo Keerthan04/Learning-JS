@@ -48,6 +48,63 @@ const smallNumbers=bigNumbers.map(divide=>{
 })
 console.log(smallNumbers);
 
+//filter demo
+const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+
+// Call .filter() on randomNumbers below
+const smallNumberss=randomNumbers.filter(less=>{
+  return less < 250;
+})
+console.log(smallNumberss);
+const favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'];
+
+
+// Call .filter() on favoriteWords below
+const longFavoriteWords= favoriteWords.filter(greater=>{
+  return greater.length > 7;
+})
+console.log(longFavoriteWords);
+
+//findIndexdemo
+const animalss = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+
+const foundAnimal = animalss.findIndex(animal => {
+  return animal === 'elephant';
+});
+
+const startsWithS = animalss.findIndex(animal => {
+  return animal[0] === 's' ? true : false;
+});
+
+//reduce demo
+const newNumbers = [1, 3, 5, 7];
+
+const newSum=newNumbers.reduce((accumulator,currentValue)=>{
+  console.log('The value of accumulator: ', accumulator);
+  console.log('The value of currentValue: ', currentValue);
+  return accumulator+currentValue;
+},10);
+console.log(newSum);
+
+//example of extra-read documentation for more
+const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+
+// Something is missing in the method call below
+
+console.log(words.some((word) => {
+  return word.length < 6;
+}));
+
+// Use filter to create a new array
+const interestingWords=words.filter(newwords=>{
+  return newwords.length>5;
+})
+
+
+// Make sure to uncomment the code below and fix the incorrect code before running it
+
+console.log(interestingWords.every((word) => {return word.length>5; } ));
+
 
 /*
   Introduction to Iterators
@@ -125,4 +182,110 @@ console.log(smallNumbers);
     console.log(bigNumbers); // Output: [10, 20, 30, 40, 50]
 
     Notice that the elements in numbers were not altered and bigNumbers is a new array.
+
+  3.The .filter() Method
+    Another useful iterator method is .filter(). Like .map(), .filter() returns a new array. However, 
+    .filter() returns an array of elements after filtering out certain elements from the original array. 
+    The callback function for the .filter() method should return true or false depending on the element 
+    that is passed to it. The elements that cause the callback function to return true are added to the
+    new array. Take a look at the following example:
+
+    const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+
+    const shortWords = words.filter(word => {
+      return word.length < 6;
+    });
+
+    words is an array that contains string elements.
+    const shortWords = declares a new variable that will store the returned array from invoking .filter().
+    The callback function is an arrow function that has a single parameter, word. Each element in the words 
+    array will be passed to this function as an argument.
+    word.length < 6; is the condition in the callback function. Any word from the words array that has 
+    fewer than 6 characters will be added to the shortWords array.
+    Let’s also check the values of words and shortWords:
+
+    console.log(words); // Output: ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+    console.log(shortWords); // Output: ['chair', 'music', 'brick', 'pen', 'door']
+
+    Observe how words was not mutated, i.e. changed, and shortWords is a new array.
+
+  4. The .findIndex() Method
+    We sometimes want to find the location of an element in an array. That’s where the .findIndex() method 
+    comes in! Calling .findIndex() on an array will return the index of the first element that evaluates to 
+    true in the callback function.
+
+    const jumbledNums = [123, 25, 78, 5, 9]; 
+
+    const lessThanTen = jumbledNums.findIndex(num => {
+      return num < 10;
+    });
+
+    jumbledNums is an array that contains elements that are numbers.
+    const lessThanTen = declares a new variable that stores the returned index number from invoking 
+    .findIndex().
+    The callback function is an arrow function that has a single parameter, num. Each element in the 
+    jumbledNums array will be passed to this function as an argument.
+    num < 10; is the condition that elements are checked against. .findIndex() will return the index of 
+    the first element which evaluates to true for that condition.
+    Let’s take a look at what lessThanTen evaluates to:
+
+    console.log(lessThanTen); // Output: 3 
+
+    If we check what element has index of 3:
+
+    console.log(jumbledNums[3]); // Output: 5
+
+    Great, the element in index 3 is the number 5. This makes sense since 5 is the first element that is 
+    less than 10.
+
+    If there isn’t a single element in the array that satisfies the condition in the callback, then 
+    .findIndex() will return -1.
+
+    const greaterThan1000 = jumbledNums.findIndex(num => {
+      return num > 1000;
+    });
+
+    console.log(greaterThan1000); // Output: -1
+
+  5.The .reduce() Method
+    Another widely used iteration method is .reduce(). The .reduce() method returns a single value after 
+    iterating through the elements of an array, thereby reducing the array. Take a look at the example below:
+
+    const numbers = [1, 2, 4, 10];
+
+    const summedNums = numbers.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue
+    })
+
+    console.log(summedNums) // Output: 17
+
+    Here are the values of accumulator and currentValue as we iterate through the numbers array:
+
+    Iteration	accumulator	currentValue	return value
+    First	1	2	3
+    Second	3	4	7
+    Third	7	10	17
+
+    Now let’s go over the use of .reduce() from the example above:
+
+    numbers is an array that contains numbers.
+    summedNums is a variable that stores the returned value of invoking .reduce() on numbers.
+    numbers.reduce() calls the .reduce() method on the numbers array and takes in a callback function as 
+    argument.
+    The callback function has two parameters, accumulator and currentValue. The value of accumulator starts 
+    off as the value of the first element in the array and the currentValue starts as the second element. 
+    To see the value of accumulator and currentValue change, review the chart above.
+    As .reduce() iterates through the array, the return value of the callback function becomes the accumulator
+    value for the next iteration, currentValue takes on the value of the current element in the looping 
+    process.
+    The .reduce() method can also take an optional second parameter to set an initial value for accumulator 
+    (remember, the first argument is the callback function!). For instance:
+
+    const numbers = [1, 2, 4, 10];
+
+    const summedNums = numbers.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue
+    }, 100)  // <- Second argument for .reduce()
+
+    console.log(summedNums); // Output: 117
 */
