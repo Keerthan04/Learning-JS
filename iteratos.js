@@ -105,7 +105,29 @@ const interestingWords=words.filter(newwords=>{
 
 console.log(interestingWords.every((word) => {return word.length>5; } ));
 
+//choosing best methods
+const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
 
+const nums = [1, 50, 75, 200, 350, 525, 1000];
+
+//  Choose a method that will return undefined
+cities.forEach(city => console.log('Have you visited ' + city + '?'));
+
+// Choose a method that will return a new array
+const longCities = cities.filter(city => city.length > 7);
+
+// Choose a method that will return a single value
+const word = cities.reduce((acc, currVal) => {
+  return acc + currVal[0]
+}, "C");
+
+console.log(word)
+
+// Choose a method that will return a new array
+const smallerNums = nums.map(num => num - 5);
+
+// Choose a method that will return a boolean value
+nums.every(num => num < 0);
 /*
   Introduction to Iterators
     Imagine you had a grocery list and you wanted to know what each item on the list was. You’d have to 
@@ -288,4 +310,32 @@ console.log(interestingWords.every((word) => {return word.length>5; } ));
     }, 100)  // <- Second argument for .reduce()
 
     console.log(summedNums); // Output: 117
+
+
+    Choose the Right Iterator
+There are many iteration methods you can choose. In addition to learning the correct syntax for the use of 
+iteration methods, it is also important to learn how to choose the correct method for different scenarios. 
+The exercises below will give you the opportunity to do just that!
+
+You’ll see errors pop up in the terminal as you work through this exercise, but by the end the errors will 
+be gone!
+
+
+Review
+Awesome job on clearing the iterators lesson! You have learned a number of useful methods in this lesson as 
+well as how to use the JavaScript documentation from the Mozilla Developer Network to discover and understand
+additional methods. Let’s review!
+
+.forEach() is used to execute the same code on every element in an array but does not change the array and 
+returns undefined.
+.map() executes the same code on every element in an array and returns a new array with the updated elements.
+.filter() checks every element in an array to see if it meets certain criteria and returns a new array with 
+the elements that return truthy for the criteria.
+.findIndex() returns the index of the first element of an array that satisfies a condition in the callback 
+function. It returns -1 if none of the elements in the array satisfies the condition.
+.reduce() iterates through an array and takes the values of the elements and returns a single value.
+All iterator methods take a callback function, which can be a pre-defined function, a function expression, 
+or an arrow function.
+You can visit the Mozilla Developer Network to learn more about iterator methods (and all other parts of 
+  JavaScript!).
 */
