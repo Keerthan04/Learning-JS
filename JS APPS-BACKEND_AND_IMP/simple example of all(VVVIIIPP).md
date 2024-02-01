@@ -1,5 +1,7 @@
 # IMPORTANT
 
+https://www.codecademy.com/paths/create-a-back-end-app-with-javascript/tracks/bapi-javascript-arrays-loops-and-iterators/modules/project-beat-mix/articles/back-end-architecture
+
 see so a client is basically frontend(or the UI user sees ) and he makes a request so when a request is made the http verb and the URL(like the products with id and all) is send as request to server the server will have routes based on the URL and ids and all and matching the request is routing and when matched the request to response will be the middleware where function will be which will send the response back to the client and the clients see it In the middleware mostly the queries can be there to interact with the database and responds so for the route and routing and all we have express na 
 
 Let me break down the components you mentioned:
