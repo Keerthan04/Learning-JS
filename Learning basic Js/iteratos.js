@@ -338,4 +338,7 @@ All iterator methods take a callback function, which can be a pre-defined functi
 or an arrow function.
 You can visit the Mozilla Developer Network to learn more about iterator methods (and all other parts of 
   JavaScript!).
+
+  methods
+  https://javascript.info/array-methods
 */
