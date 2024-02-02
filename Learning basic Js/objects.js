@@ -1,3 +1,4 @@
+//for in will go to the proeprties then from that the values has to be extracted
 //creating objects
 let fasterShip={
     'Fuel Type': 'Turbo Fuel',

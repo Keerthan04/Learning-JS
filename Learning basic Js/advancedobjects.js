@@ -3,7 +3,7 @@
 
 //factory function-returns an object
 //callback function-function passed as an argument in another function
-
+//setters dont need to return just set value,see accessing getters and setters also and naming conventions 
 //use of this
 const robot = {
     model : '1E78V2',
