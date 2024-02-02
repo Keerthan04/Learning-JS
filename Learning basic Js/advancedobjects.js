@@ -1,3 +1,4 @@
+//advance objects-this,getters,setters,factory functions,destructing(same name irbeku)
 //use of this
 const robot = {
     model : '1E78V2',
@@ -137,7 +138,8 @@ console.log(newRobots);
 
 /*
   Advanced Objects Introduction
-    Remember, objects in JavaScript are containers that store data and functionality. In this lesson, we will build upon the fundamentals of creating objects and explore some advanced concepts.
+    Remember, objects in JavaScript are containers that store data and functionality. In this lesson, we will
+    build upon the fundamentals of creating objects and explore some advanced concepts.
 
     So if there are no objections, let’s learn more about objects!
 
@@ -349,7 +351,9 @@ console.log(newRobots);
   6.Property Value Shorthand
     ES6 introduced some new shortcuts for assigning properties to variables known as destructuring.
 
-    In the previous exercise, we created a factory function that helped us create objects. We had to assign each property a key and value even though the key name was the same as the parameter name we assigned to it. To remind ourselves, here’s a truncated version of the factory function:
+    In the previous exercise, we created a factory function that helped us create objects. We had to assign 
+    each property a key and value even though the key name was the same as the parameter name we assigned 
+    to it. To remind ourselves, here’s a truncated version of the factory function:
 
     const monsterFactory = (name, age) => {
     return { 
@@ -358,7 +362,9 @@ console.log(newRobots);
     }
     };
 
-    Imagine if we had to include more properties, that process would quickly become tedious! But we can use a destructuring technique, called property value shorthand, to save ourselves some keystrokes. The example below works exactly like the example above:
+    Imagine if we had to include more properties, that process would quickly become tedious! But we can 
+    use a destructuring technique, called property value shorthand, to save ourselves some keystrokes. 
+    The example below works exactly like the example above:
 
     const monsterFactory = (name, age) => {
     return { 
@@ -374,12 +380,12 @@ console.log(newRobots);
     following object:
 
     const vampire = {
-    name: 'Dracula',
-    residence: 'Transylvania',
-    preferences: {
-        day: 'stay inside',
-        night: 'satisfy appetite'
-    }
+      name: 'Dracula',
+      residence: 'Transylvania',
+      preferences: {
+          day: 'stay inside',
+          night: 'satisfy appetite'
+      }
     };
 
     If we wanted to extract the residence property as a variable, we could use the following code:
