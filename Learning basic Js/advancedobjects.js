@@ -1,4 +1,9 @@
-//advance objects-this,getters,setters,factory functions,destructing(same name irbeku)
+//advance objects-this,getters,setters(when getters and setters this used and end with comma(another property type)),factory functions,destructing(same name irbeku)
+//this gives the reference to the calling object so can use and access differenet properties of objects within another objects
+
+//factory function-returns an object
+//callback function-function passed as an argument in another function
+
 //use of this
 const robot = {
     model : '1E78V2',
