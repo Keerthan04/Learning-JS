@@ -1,4 +1,4 @@
-
+//when many params are ther in our rote it is store in req.params as an obj(even if one) and all are stored as strings
 
 /*
   1.Introduction
