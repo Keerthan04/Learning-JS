@@ -2,7 +2,7 @@
 //learn next() and also req.on()
 
 //LEARN THESE
-//multiple callback,.on,next,paths,morgan,express and other opensource ka doc,bodyParser
+//multiple callback,.on,next,paths,morgan,express and other opensource ka doc,bodyParser,errorhandler
 
 /*
   1.Introduction
@@ -250,4 +250,60 @@
 
     //what ever we wrote in bodypraser that is for the body of the request we did there is an aopern source package for it
     //app.use(bodyParser.json());import and use this so qutomaetically this will convert the req body to json and send there are many methods in which we can transform json is one and also it adds the json converted body to req.body//body parser will parse the body of incoming request 
+
+  13.Error-Handling Middleware
+    We’re almost finished with our Code Quality Checklist, there’s just one last problem to fix! When an error is thrown somewhere in our code, we want to be able to communicate that there was a problem to the user. A programming error is never something to be ashamed of. It’s simply another situation for which we should be prepared.
+
+    Error handling middleware needs to be the last app.use() in your file. If an error happens in any of our routes, we want to make sure it gets passed to our error handler. The middleware stack progresses through routes as they are presented in a file, therefore the error handler should sit at the bottom of the file. How do we write it?
+
+
+    Explain
+    app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+    });
+
+    Based on the code above, we can see that error-handling middleware is written much like other kinds of middleware. The biggest difference is that there is an additional parameter in our callback function, err. This represents the error object, and we can use it to investigate the error and perform different tasks depending on what kind of error was thrown. For now, we only want to send an HTTP 500 status response to the user.
+
+    Express has its own error-handler, which catches errors that we haven’t handled. But if we anticipate an operation might fail, we can invoke our error-handling middleware. We do this by passing an error object as an argument to next(). Usually, next() is called without arguments and will proceed through the middleware stack as expected. When called with an error as the first argument, however, it will call any applicable error-handling middleware.
+
+
+    Explain
+    app.use((req, res, next) => {
+    const newValue = possiblyProblematicOperation();
+    if (newValue === undefined) {
+        let undefinedError = new Error('newValue was not defined!');
+        return next(undefinedError);
+    }
+    next();
+    });
+
+    app.use((err, req, res, next) => {
+    const status = err.status || 500;
+    res.status(status).send(err.message);
+    });
+
+    In this segment we assign the return value of the function possiblyProblematicOperation() to newValue. Then we check to see if this function returned anything at all. If it didn’t, we create a new Error and pass it to next(). This prompts the error-handling middleware to send a response back to the user, but many other error-handling techniques could be employed (like logging, re-attempting the failed operation, and/or emailing the developer).
+
+    //error handler
+    app.use((err, req, res, next) => {
+        if (!err.status) {
+            err.status = 500;
+        }
+        res.status(err.status).send(err.message);
+    });
+
+  14.Discovering Open-Source Middleware
+    While it’s good to know how to write error-handling middleware, it’s a natural curiosity that causes us to ask “isn’t error-handling a common task? Has someone written middleware that performs it for us?” Let’s take a look at the list of Express middleware. This list of middleware includes many things the creators of Express maintain, some of which was included in Express in previous versions. The movement on the Express team’s part to identify separate functionality and modularize their code into independent factors allows developers like us to only take what we need. In this way, they can make major updates to each middleware individually and programmers who do not use that middleware won’t have to worry about their version of Express being out of date.
+
+    docs of express
+    https://expressjs.com/en/resources/middleware/errorhandler.html
+
+    errorhandler middleware
+    app.use(errorhandler())//in starting used import it then use
+
+Review
+We’ve accomplished a lot! We learned what middleware is and we’ve used it to write cleaner, readable, adaptable, and maintainable code. We’ve written functions that are context aware and can have overlapping functionality without duplicating code. We can serve data by route, with each possible endpoint being treated as a separate relative of the family of our application. We learned to link these middleware using next() to continue to the next middleware in the stack. We’ve reduced complexity in our codebase by relying on external, open-source middleware. We are truly harnessing the power of the Express web server, the Node environment, and our knowledge of Javascript. Let’s review those skills.
+
+In the workspace there is another codebase with a set of familiar problems. Custom middleware to accomplish tasks we could be importing a module for. Duplicated code throughout the different routes. Improperly managed middleware stack missing next() calls. You will need everything learned in this lesson, but it’s nothing you haven’t done before.
 */  
