@@ -4,6 +4,28 @@
 //LEARN THESE
 //multiple callback,.on,next,paths,morgan,express and other opensource ka doc,bodyParser,errorhandler
 
+//error handler function
+const errorHandler = (err, req, res, next) => {
+  if (!err.status) {
+    err.status = 500;
+  }
+  res.status(err.status).send(err.message);
+}
+
+//usage of cors module
+const cors=require('cors');
+app.use(cors());
+
+//use of admin and non admin access
+const isAdmin = (req, res, next) => {
+  const id = req.params.userId;
+  if (!secretData.adminUsers.includes(id)) {
+    res.status(401).send(); // Unauthorized
+  } else {
+    next();
+  }
+}
+app.use(['/:userId/phone-numbers', '/:userId/fav-sites'], isAdmin);
 /*
   1.Introduction
     Writing code is a creative process. Programmers will be quick to differ in opinion on whether the solution to a problem should be implemented in one way or another — citing tradeoffs in algorithms, structures, or even languages. Due to these trade-offs, the problems programmers face most frequently will have several different solutions, all correct but all written differently with various factors considered. Because “correct” code can take so many different forms, developers have cultural notions of code quality that is somewhat independent of these decisions.
