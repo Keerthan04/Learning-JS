@@ -1,7 +1,22 @@
 count,max,min,sum,avg,round(col,decimal places to round off to),group by,having(imp)
-where-based on rows then having based on agg functions applied on columns
+
+where-based on rows then having based on (agg functions applied on columns or by groups)
 
 select,from,where,groupby,having,orderby,limit(order in which written)
+
+ex
+select category,round(avg(valuation),2) from startups
+group by category order by 2 desc ;
+
+referencing can be done by any like here order by also used it so easy otherwise the round(avg ) and all shd be written within order by also would give the same result but also
+
+ex use of alias name and usage
+SELECT
+  ROUND(watch_duration_in_minutes,0) as duration,
+  COUNT(*) as count
+FROM watch_history
+GROUP BY duration
+ORDER BY duration ASC;
 
 ## Introduction
 SQL Queries don’t just access raw data, they can also perform calculations on the raw data to answer specific data questions.
