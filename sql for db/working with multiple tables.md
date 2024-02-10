@@ -1,5 +1,5 @@
 
-
+comment in sql=> /* */
 ## Introduction
 In order to efficiently store data, we often spread related information across multiple tables.
 
@@ -275,6 +275,24 @@ FROM previous_query
 JOIN customers
 	ON customers.customer_id = previous_query.customer_id;
 
+ex
+ SELECT premium_users.user_id,
+  months.months,
+  CASE
+    WHEN (
+      premium_users.purchase_date <= months.months
+      )
+      AND
+      (
+        premium_users.cancel_date >= months.months
+        OR
+        premium_users.cancel_date IS NULL
+      )
+    THEN 'active'
+    ELSE 'not_active'
+  END AS 'status'//will give name of col as status
+FROM premium_users
+CROSS JOIN months;
 
 # Review
 In this lesson, we learned about relationships between tables in relational databases and how to query information from multiple tables using SQL.
