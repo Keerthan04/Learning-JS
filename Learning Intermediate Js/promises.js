@@ -2,6 +2,8 @@
 //whenevr a promise is returned then the .then is used
 //if for .then() nothing given it will return a promise on the same based on what it was called so can use two then or a .then() and a .catch()
 
+//promise is a object which will have data stored in it which we resolve and reject
+
 //creating a promise
 const inventory = {
   sunglasses: 1900,
