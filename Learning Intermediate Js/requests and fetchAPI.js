@@ -238,4 +238,6 @@ The async keyword is used to create asynchronous functions that will return prom
 The await keyword can only be used with functions declared with the async keyword.
 The await keyword suspends the program while waiting for a promise to resolve.
 Congratulations on learning all about asynchronous requests using fetch(), async, and await! These concepts are fundamental to helping you develop more robust web apps!
+
+learn for other methods also
 */
